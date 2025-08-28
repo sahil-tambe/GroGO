@@ -7,35 +7,40 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="light">
+  <div class="background-glow"></div>
+  <div class="background-noise"></div>
+  <div class="theme-swipe"></div>
   <!-- Navbar -->
   <header class="navbar">
     <div class="logo">GroGo</div>
     <div class="nav-group">
-      <nav class="nav-pill">
-        <a href="#" class="nav-link active">Home</a>
-        <a href="#" class="nav-link">About</a>
-        <div class="nav-link dropdown">
-          Contact
-          <div class="dropdown-menu">
-            <a href="https://x.com/yourprofile" target="_blank" class="dropdown-item">X (Twitter)</a>
-            <a href="mailto:your@email.com" class="dropdown-item">Email</a>
-            <a href="https://discord.com/invite/yourinvite" target="_blank" class="dropdown-item">Discord</a>
-          </div>
-        </div>
+      <nav class="nav-pill nav-animated" id="mainNav">
+        <a href="#home" class="nav-link active"><span>Home</span></a>
+        <a href="#about" class="nav-link"><span>About</span></a>
+        <a href="#contact" class="nav-link"><span>Contact</span></a>
+        <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
       <div class="nav-actions">
         <a href="#" class="action-btn">Launch App <span class="arrow">↗</span></a>
         <a href="#" class="action-btn">Start Building <span class="arrow">↗</span></a>
       </div>
     </div>
-    <button id="theme-toggle" class="toggle-btn">🌙</button>
+    <!-- From Uiverse.io by chase2k25 -->
+    <div class="switch-container">
+      <input class="toggle-checkbox" id="toggle-switch" type="checkbox" />
+      <label class="switch" for="toggle-switch">
+        <div class="toggle">
+          <div class="led"></div>
+        </div>
+      </label>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text">
       <h1>Welcome to <span>GroGo</span></h1>
-      <p>Experience the future of gaming and ride-sharing in one platform.</p>
+      <p>Experience the future of ride-sharing in one platform.</p>
       <button class="cta">Get Started</button>
     </div>
   </section>
