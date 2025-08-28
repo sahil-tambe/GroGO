@@ -1,47 +1,395 @@
+/* 🌚 Dark Mode Variables */
+body.dark {
+  --bg-color: #0d1117;
+  --text-color: #e6f1ff;
+  --accent-color: #00bfff;
+  --secondary-color: #161b22;
+}
+
+body.dark {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.dark .background-glow {
+  background: radial-gradient(ellipse at 60% 40%, #00ff99 0%, transparent 70%);
+  opacity: 0.22;
+}
+
+/* Card/section backgrounds for dark mode */
+.features, .feature-cards, .card, .hero {
+  background: none;
+}
+body.dark .features, body.dark .feature-cards, body.dark .card {
+  background: var(--secondary-color);
+  color: var(--text-color);
+  box-shadow: 0 2px 12px #000a;
+}
+body.dark .hero {
+  background: none;
+  color: var(--text-color);
+}
+
+/* Navbar dark mode */
+body.dark .navbar {
+  background: #11131a;
+  box-shadow: 0 2px 12px #000c;
+}
+body.dark .nav-pill {
+  background: #181c23;
+}
+body.dark .nav-pill .nav-link {
+  color: #e6f1ff;
+}
+body.dark .nav-pill .nav-link.active {
+  color: #00bfff;
+}
+body.dark .nav-indicator {
+  background: #222b3a;
+}
+
+/* Buttons dark mode */
+body.dark .action-btn {
+  background: linear-gradient(90deg, #222b3a 70%, #1a2230 100%);
+  color: #e6f1ff;
+}
+body.dark .action-btn:hover {
+  background: linear-gradient(90deg, #00bfff 70%, #00ff99 100%);
+  color: #111;
+}
+body.dark .cta {
+  background: #00bfff;
+  color: #111;
+}
+/* From Uiverse.io by chase2k25 */
+/* Switch Container */
+.switch-container {
+  position: relative;
+  width: 150px;
+  height: 60px;
+  background: #d6d6d6;
+  border-radius: 50px;
+  box-shadow:
+    inset -8px -8px 16px #ffffff,
+    inset 8px 8px 16px #b0b0b0;
+}
+
+/* Hidden Checkbox */
+.toggle-checkbox {
+  display: none;
+}
+
+/* Switch Label (Interactive Area) */
+.switch {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-50%);
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Toggle Button */
+.toggle {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background: linear-gradient(145deg, #d9d9d9, #bfbfbf);
+  border-radius: 50px;
+  top: 5px;
+  left: 5px;
+  box-shadow:
+    -4px -4px 8px #ffffff,
+    4px 4px 8px #b0b0b0;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+/* LED Light */
+.led {
+  width: 10px;
+  height: 10px;
+  background: grey;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Active State for Toggle (ON) */
+.toggle-checkbox:checked + .switch .toggle {
+  left: 65px;
+  background: linear-gradient(145deg, #cfcfcf, #a9a9a9);
+  box-shadow:
+    -4px -4px 8px #ffffff,
+    4px 4px 8px #8a8a8a;
+}
+
+.toggle-checkbox:checked + .switch .led {
+  background: yellow;
+  box-shadow: 0 0 15px 4px yellow;
+}
+
+/* Hover Effect */
+.switch:hover .toggle {
+  box-shadow:
+    -4px -4px 12px #ffffff,
+    4px 4px 12px #9b9b9b;
+}
+/* 🌞 Light Mode Variables */
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #ffffff;
+  --secondary-color: #f2f2f2;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.6s ease, color 0.6s ease;
+}
+/* Immersive backgrounds for GroGo */
+body {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+body.light {
+  background: #f5f5f7;
+}
+body.dark {
+  background: #0d1117;
+}
+
+/* Radial glow for both modes */
+.background-glow {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 120vw;
+  height: 120vh;
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0.45;
+  
+}
+body.dark .background-glow {
+  background: radial-gradient(ellipse at center, #00ff99 0%, transparent 70%);
+  opacity: 0.32;
+}
+
+/* Subtle noise overlay */
+.background-noise {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.10;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none"><filter id="a"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2"/></filter><rect width="100" height="100" fill="white" filter="url(%23a)"/></svg>');
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* For swipe transition effect */
+.theme-swipe {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  background: #0d1117;
+  transform: translateX(-100vw);
+  transition: transform 0.7s cubic-bezier(.77,0,.18,1);
+}
+body.light .theme-swipe {
+  background: #f5f5f7;
+}
+body.theme-transitioning .theme-swipe {
+  transform: translateX(0);
+}
+/* Nav pill swipe indicator */
+.nav-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.nav-pill .nav-link {
+  position: relative;
+  z-index: 2;
+  padding: 10px 20px;
+  border-radius: 24px;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  background: none;
+  transition: color 0.2s;
+}
+.nav-indicator {
+  position: absolute;
+  top: 4px;
+  height: 36px;
+  left: 0;
+  width: 0;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transform: translateX(0);
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1),
+    width .35s cubic-bezier(.22,1,.36,1);
+  z-index: 1;
+}
+.nav-pill .nav-link.active {
+  color: #111;
+  font-weight: 600;
+}
+.nav-pill .nav-link:hover {
+  color: #00c3ff;
+}
+/* Nav Toggle Animation */
+.nav-toggle-container {
+  position: relative;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-section {
+  position: absolute;
+  left: 0; right: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.nav-section-1.active,
+.nav-section-2.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  z-index: 1;
+}
+.nav-section-1:not(.active),
+.nav-section-2:not(.active) {
+  z-index: 0;
+}
+/* Redesigned Navbar Styles */
+.redesigned-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f8f8;
+  padding: 18px 4vw 0 4vw;
+  box-shadow: 0 2px 12px #0001;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.redesigned-logo {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #00c6ff;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+.redesigned-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: #fff;
+  border-radius: 32px;
+  padding: 6px 32px;
+  box-shadow: 0 1px 8px #0001;
+}
+.redesigned-link {
+  font-size: 1.15rem;
+  color: #222;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+.redesigned-link:hover {
+  background: #00c6ff22;
+  color: #00c6ff;
+}
+.redesigned-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.redesigned-btn {
+  background: linear-gradient(90deg, #111 70%, #222 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 32px;
+  padding: 12px 28px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.redesigned-btn:hover {
+  background: linear-gradient(90deg, #222 70%, #111 100%);
+  box-shadow: 0 4px 16px #0003;
+}
+.redesigned-arrow {
+  background: #fff;
+  color: #111;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.redesigned-toggle {
+  background: #00c6ff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 6px #00c6ff33;
+  transition: background 0.2s;
+  font-size: 1.3rem;
+  color: #fff;
+}
+.redesigned-toggle:hover {
+  background: #0099cc;
+}
 .nav-pill {
   position: relative;
 }
 
-/* Swipe animation for active nav link */
-.nav-pill .nav-link {
-  position: relative;
-  overflow: hidden;
-}
-.nav-pill .nav-link.active::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 100%;
-  background: #fff;
-  border-radius: 24px;
-  z-index: 0;
-  animation: swipeIn 0.5s cubic-bezier(.4,2,.6,1);
-}
-.nav-pill .nav-link.active {
-  color: #111;
-  font-weight: bold;
-  z-index: 1;
-}
-.nav-pill .nav-link span,
-.nav-pill .nav-link {
-  position: relative;
-  z-index: 2;
-}
-@keyframes swipeIn {
-  from { width: 0; }
-  to { width: 100%; }
+/* Keep underline for active section */
+.nav-animated .nav-link.active::after {
+  transform: scaleX(1);
 }
 
-/* Hide label text when active */
-.nav-pill .nav-link.active span,
-.nav-pill .dropdown.active {
-  color: transparent !important;
-  transition: color 0.3s;
+.nav-animated .nav-link.active {
+  color: #00c3ff;
+  font-weight: 600;
 }
-.nav-pill .nav-link span,
-.nav-pill .dropdown {
-  transition: color 0.3s;
-}
+
 
 /* Dropdown styles */
 .dropdown {
@@ -255,8 +603,8 @@ body.dark {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, #00c3ff, #7d2ae8);
-  color: white;
+  background: #fff;
+  color: #222;
   animation: fadeIn 1.5s ease-in;
 }
 
