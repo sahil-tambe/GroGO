@@ -1,3 +1,27 @@
+// Hamburger menu for mobile nav
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger-menu');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (!hamburger || !mobileNav) return;
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+  });
+  // Close mobile nav on link click or outside click
+  mobileNav.addEventListener('click', function(e) {
+    if (e.target.classList.contains('nav-link')) {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('click', function(e) {
+    if (!mobileNav.contains(e.target) && !hamburger.contains(e.target)) {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+});
 // Theme swipe transition effect for new switch
 document.addEventListener('DOMContentLoaded', function() {
   const themeSwitch = document.getElementById('toggle-switch');
@@ -5,33 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const swipe = document.querySelector('.theme-swipe');
   if (!themeSwitch || !swipe) return;
   // Set initial state based on theme
-  themeSwitch.checked = body.classList.contains('dark');
-  themeSwitch.addEventListener('change', function(e) {
-    // Animate swipe
-    body.classList.add('theme-transitioning');
-    swipe.style.transition = 'none';
-    swipe.style.transform = 'translateX(-100vw)';
-    void swipe.offsetWidth; // force reflow
-    swipe.style.transition = '';
-    swipe.style.transform = 'translateX(0)';
-    setTimeout(() => {
-      // Actually toggle theme after swipe covers
-      if (themeSwitch.checked) {
-        body.classList.remove('light');
-        body.classList.add('dark');
-      } else {
-        body.classList.remove('dark');
-        body.classList.add('light');
-      }
-      // Slide swipe away
-      swipe.style.transform = 'translateX(100vw)';
-      setTimeout(() => {
-        swipe.style.transition = 'none';
-        swipe.style.transform = 'translateX(-100vw)';
-        body.classList.remove('theme-transitioning');
-      }, 700);
-    }, 400);
-  });
 });
 // Nav pill swipe indicator logic
 document.addEventListener('DOMContentLoaded', function() {
@@ -77,24 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
   let showingFirst = true;
   if (nav1 && nav2 && toggleBtn) {
     nav1.classList.add('active');
-    toggleBtn.addEventListener('click', function() {
-      if (showingFirst) {
-        nav1.classList.remove('active');
-        setTimeout(() => {
-          nav1.style.display = 'none';
-          nav2.style.display = '';
-          nav2.classList.add('active');
-        }, 400);
-      } else {
-        nav2.classList.remove('active');
-        setTimeout(() => {
-          nav2.style.display = 'none';
-          nav1.style.display = '';
-          nav1.classList.add('active');
-        }, 400);
-      }
-      showingFirst = !showingFirst;
-    });
   }
 });
 // Update active nav link on click
@@ -107,6 +86,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-
 
