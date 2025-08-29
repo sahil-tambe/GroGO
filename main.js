@@ -1,3 +1,71 @@
+// Fix for nav pill indicator
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.getElementById('mainNav');
+  if (!nav) return;
+  
+  const indicator = nav.querySelector('.nav-indicator');
+  const links = Array.from(nav.querySelectorAll('.nav-link'));
+
+  function moveIndicator(target) {
+    if (!indicator || !target) return;
+    
+    const navRect = nav.getBoundingClientRect();
+    const rect = target.getBoundingClientRect();
+    const left = rect.left - navRect.left;
+    const width = rect.width;
+    
+    indicator.style.width = `${width}px`;
+    indicator.style.transform = `translateX(${left}px) translateY(-50%)`;
+  }
+
+  function initIndicator() {
+    const active = nav.querySelector('.nav-link.active') || links[0];
+    if (active) {
+      moveIndicator(active);
+      // Ensure indicator is visible
+      indicator.style.opacity = '1';
+    }
+  }
+
+  // Handle click events
+  links.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Remove active class from all links
+      links.forEach(l => l.classList.remove('active'));
+      
+      // Add active class to clicked link
+      this.classList.add('active');
+      
+      // Move indicator
+      moveIndicator(this);
+    });
+  });
+
+  // Initialize on load
+  setTimeout(initIndicator, 100);
+  
+  // Reinitialize on window resize
+  window.addEventListener('resize', initIndicator);
+});
+
+
+// Fade-in effect for ride slides on scroll
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.ride-slide');
+  function checkSlides() {
+    const trigger = window.innerHeight * 0.85;
+    slides.forEach(slide => {
+      const rect = slide.getBoundingClientRect();
+      if (rect.top < trigger) {
+        slide.classList.add('visible');
+      }
+    });
+  }
+  checkSlides();
+  window.addEventListener('scroll', checkSlides);
+});
 // Hamburger menu for mobile nav
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger-menu');
@@ -21,14 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
       hamburger.setAttribute('aria-expanded', 'false');
     }
   });
-});
-// Theme swipe transition effect for new switch
-document.addEventListener('DOMContentLoaded', function() {
-  const themeSwitch = document.getElementById('toggle-switch');
-  const body = document.body;
-  const swipe = document.querySelector('.theme-swipe');
-  if (!themeSwitch || !swipe) return;
-  // Set initial state based on theme
 });
 // Nav pill swipe indicator logic
 document.addEventListener('DOMContentLoaded', function() {
@@ -65,16 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   window.addEventListener('resize', initIndicator);
   initIndicator();
-});
-// Navbar section toggle logic
-document.addEventListener('DOMContentLoaded', function() {
-  const nav1 = document.querySelector('.nav-section-1');
-  const nav2 = document.querySelector('.nav-section-2');
-  const toggleBtn = document.getElementById('theme-toggle');
-  let showingFirst = true;
-  if (nav1 && nav2 && toggleBtn) {
-    nav1.classList.add('active');
-  }
 });
 // Update active nav link on click
 document.addEventListener('DOMContentLoaded', function() {
