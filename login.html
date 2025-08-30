@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroGo Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+  <div class="login-split" id="loginSplit">
+    <div class="login-left" id="loginLeft">
+      <div class="login-logo-row">
+        <span class="login-logo-icon">🚗</span>
+        <span class="login-logo-text">GroGo</span>
+      </div>
+      <div class="login-tabs pill-tabs">
+        <button class="login-tab active" id="tab-signin" type="button">Sign In</button>
+        <button class="login-tab" id="tab-signup" type="button">Sign Up</button>
+      </div>
+      <div id="form-signin" class="login-form-modern login-form-pane">
+        <h2 class="login-title">Welcome back</h2>
+        <p class="login-subtitle">Please enter your details</p>
+        <form>
+          <label>Email address
+            <input type="email" placeholder="Enter your email" required>
+          </label>
+          <label>Password
+            <input type="password" placeholder="Enter your password" required>
+          </label>
+          <div class="login-form-row">
+            <label class="remember-me"><input type="checkbox"> Remember for 30 days</label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+          <button type="submit" class="login-btn-main">Sign In</button>
+          <button type="button" class="login-btn-google">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="google-icon"> Sign in with Google
+          </button>
+        </form>
+        <div class="login-bottom-text">Don't have an account? <a href="#" class="signup-link" id="signupLink">Sign up</a></div>
+      </div>
+      <div id="form-signup" class="login-form-modern login-form-pane" style="display:none">
+        <h2 class="login-title">Create your account</h2>
+        <p class="login-subtitle">Sign up to get started</p>
+        <form>
+          <label>Email address
+            <input type="email" placeholder="Enter your email" required>
+          </label>
+          <label>Password
+            <input type="password" placeholder="Create a password" required>
+          </label>
+          <label>Confirm Password
+            <input type="password" placeholder="Confirm your password" required>
+          </label>
+          <button type="submit" class="login-btn-main">Sign Up</button>
+          <button type="button" class="login-btn-google">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="google-icon"> Sign up with Google
+          </button>
+        </form>
+        <div class="login-bottom-text">Already have an account? <a href="#" class="signin-link" id="signinLink">Sign in</a></div>
+      </div>
+    </div>
+    <div class="login-right" id="loginRight">
+      <div class="login-illustration-placeholder">
+        <img src="https://undraw.co/api/illustrations/5e4e7e7b-7e2e-4b2e-8e2e-7e2e4b2e8e2e" alt="Illustration" class="login-illustration-img">
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
