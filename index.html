@@ -20,8 +20,9 @@
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
       <div class="nav-actions">
-  <a href="login.html" class="action-btn" data-text="Sign up"><span class="btn-text">Sign up</span><span class="arrow" aria-hidden="true"></span></a>
-  <a href="#" class="action-btn" data-text="Sign in"><span class="btn-text">Sign in</span><span class="arrow" aria-hidden="true"></span></a>
+        <!-- Open modal instead of navigating to separate login page -->
+  <button type="button" class="action-btn" data-modal-open="signup" data-text="Sign up"><span class="btn-text">Sign up</span><span class="arrow" aria-hidden="true"></span></button>
+  <button type="button" class="action-btn" data-modal-open="signin" data-text="Sign in"><span class="btn-text">Sign in</span><span class="arrow" aria-hidden="true"></span></button>
       </div>
     </div>
   </header>
@@ -31,7 +32,7 @@
     <div class="hero-text">
   <h1>Welcome to <span>GroGo</span></h1>
   <p>Experience the future of ride-sharing in one platform.</p>
-  <a href="#features" class="btn-dark" data-text="Get Started"><span class="btn-text">Get Started</span><span class="arrow" aria-hidden="true"></span></a>
+  <a href="#features" class="btn-dark" data-modal-open="signin" data-text="Get Started"><span class="btn-text">Get Started</span><span class="arrow" aria-hidden="true"></span></a>
     </div>
   </section>
 
@@ -134,5 +135,63 @@
   </footer>
 
   <script src="main.js"></script>
+  <!-- Login modal (inlined from login.html) -->
+  <div id="loginModal" class="modal" aria-hidden="true">
+    <div class="modal-overlay" data-modal-close tabindex="-1"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" aria-label="Close login dialog">×</button>
+      <div id="loginSplit" class="login-modal-inner">
+        <div class="login-logo-row">
+          <span class="login-logo-icon">🚗</span>
+          <span class="login-logo-text">GroGo</span>
+        </div>
+        <div class="login-tabs pill-tabs">
+          <button class="login-tab active" id="tab-signin" type="button">Sign In</button>
+          <button class="login-tab" id="tab-signup" type="button">Sign Up</button>
+        </div>
+        <div id="form-signin" class="login-form-modern login-form-pane">
+          <h2 class="login-title">Welcome back</h2>
+          <p class="login-subtitle">Please enter your details</p>
+          <form>
+            <label>Email address
+              <input type="email" placeholder="Enter your email" required>
+            </label>
+            <label>Password
+              <input type="password" placeholder="Enter your password" required>
+            </label>
+            <div class="login-form-row">
+              <div></div>
+              <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-btn-main">Sign In</button>
+            <button type="button" class="login-btn-google">
+              <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="google-icon"> Sign in with Google
+            </button>
+          </form>
+          <div class="login-bottom-text">Don't have an account? <a href="#" class="signup-link" id="signupLink">Sign up</a></div>
+        </div>
+        <div id="form-signup" class="login-form-modern login-form-pane" style="display:none">
+          <h2 class="login-title">Create your account</h2>
+          <p class="login-subtitle">Sign up to get started</p>
+          <form>
+            <label>Email address
+              <input type="email" placeholder="Enter your email" required>
+            </label>
+            <label>Password
+              <input type="password" placeholder="Create a password" required>
+            </label>
+            <label>Confirm Password
+              <input type="password" placeholder="Confirm your password" required>
+            </label>
+            <button type="submit" class="login-btn-main">Sign Up</button>
+            <button type="button" class="login-btn-google">
+              <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="google-icon"> Sign up with Google
+            </button>
+          </form>
+          <div class="login-bottom-text">Already have an account? <a href="#" class="signin-link" id="signinLink">Sign in</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
