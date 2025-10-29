@@ -176,3 +176,83 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+// Modal open/close for inlined login modal
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('loginModal');
+  if (!modal) return;
+  const openers = document.querySelectorAll('[data-modal-open]');
+  const overlay = modal.querySelector('.modal-overlay');
+  const closeBtn = modal.querySelector('.modal-close');
+
+  function setTab(mode) {
+    const tabSignin = document.getElementById('tab-signin');
+    const tabSignup = document.getElementById('tab-signup');
+    const formSignin = document.getElementById('form-signin');
+    const formSignup = document.getElementById('form-signup');
+    if (!tabSignin || !tabSignup || !formSignin || !formSignup) return;
+    if (mode === 'signup') {
+      tabSignup.classList.add('active');
+      tabSignin.classList.remove('active');
+      formSignup.style.display = '';
+      formSignin.style.display = 'none';
+    } else {
+      tabSignin.classList.add('active');
+      tabSignup.classList.remove('active');
+      formSignin.style.display = '';
+      formSignup.style.display = 'none';
+    }
+  }
+
+  function openModal(mode) {
+    setTab(mode || 'signin');
+    modal.classList.remove('closing');
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    // Lock scrolling behind modal
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    // focus the first input after a short delay so entrance animation can start
+    setTimeout(() => {
+      const firstInput = modal.querySelector('input, button, [tabindex]:not([tabindex="-1"])');
+      if (firstInput) firstInput.focus();
+    }, 200);
+  }
+
+  function closeModal() {
+    // play exit animation then hide
+    modal.classList.add('closing');
+    modal.setAttribute('aria-hidden', 'true');
+    // after animation, remove show and allow page scrolling
+    setTimeout(() => {
+      modal.classList.remove('show');
+      modal.classList.remove('closing');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }, 240);
+  }
+
+  openers.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const mode = (btn.getAttribute('data-modal-open') || 'signin').toLowerCase();
+      openModal(mode);
+    });
+  });
+
+  // Trigger the button animation (arrow bounce + sliding text) when an opener is clicked
+  const openerBtns = document.querySelectorAll('.action-btn');
+  openerBtns.forEach(ob => {
+    ob.addEventListener('click', function (e) {
+      ob.classList.add('clicked');
+      // remove the class after animation completes
+      setTimeout(() => ob.classList.remove('clicked'), 400);
+    });
+  });
+
+  overlay && overlay.addEventListener('click', closeModal);
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('show')) {
+      closeModal();
+    }
+  });
+});
